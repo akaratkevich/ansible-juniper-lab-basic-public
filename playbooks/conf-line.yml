@@ -1,0 +1,18 @@
+---
+- name: Manipulate the configuration of Junos devices
+  hosts: vr-vmx
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: Shutdown interface using private config mode
+      juniper_junos_config:
+        config_mode: 'private'
+        load: 'merge'
+        lines:
+          - "set interfaces ge-0/0/2 disable"
+      register: response
+    - name: Print the config changes.
+      debug:
+        var: response.diff_lines

@@ -1,0 +1,9 @@
+---
+hostname: core2
+
+# eBGP vars
+ip_lo: 2.2.2.2/32
+as_local: 65001
+as_peer: 65000
+local_peer_address: 10.0.2.1
+remote_peer_address: 10.0.2.10

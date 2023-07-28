@@ -1,0 +1,14 @@
+set interfaces ge-0/0/0 description "## Link to core1 (eth1)## "
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.4.2/24
+set interfaces ge-0/0/1 description "## Link to core2 (eth2)## "
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.5.2/24
+set interfaces lo0 description "## System_Loopback ##"
+set interfaces lo0 unit 0 family inet address 3.3.3.3/32
+set protocols lldp management-address 3.3.3.3
+set protocols lldp ptopo-configuration-trap-interval 60
+set protocols lldp lldp-configuration-notification-interval 60
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all disable
+set protocols lldp interface ge-0/0/0
+set protocols lldp interface ge-0/0/1
+

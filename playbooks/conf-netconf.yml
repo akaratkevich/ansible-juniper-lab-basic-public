@@ -1,0 +1,15 @@
+- name: enable netconf service on port 830
+  hosts: LAB  # Replace with your desired host or group
+  gather_facts: false
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: Enable NETCONF service on port 830
+      junipernetworks.junos.junos_netconf:
+        listens_on: 830
+        state: present
+      register: result
+
+    - name: Print result
+      debug:
+        var: result
+
