@@ -1,0 +1,5 @@
+---
+
+# Rendering the configuration templates and uploading the configuration to the nodes
+- import_playbook: render-eBGP-template.yml
+- import_playbook: conf-eBGP-file.yml

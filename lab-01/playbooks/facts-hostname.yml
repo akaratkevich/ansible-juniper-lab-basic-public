@@ -1,0 +1,16 @@
+- name: Get specific Junos facts
+  hosts: vr-vmx
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: Get Junos OS hostname
+      juniper_junos_facts:
+      register: junos_facts
+
+    - name: Print facts
+      debug:
+        var: junos_facts.ansible_facts.junos.hostname
+
+
