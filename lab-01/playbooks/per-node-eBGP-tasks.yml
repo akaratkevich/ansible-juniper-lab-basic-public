@@ -1,9 +1,0 @@
-- name: Load router-specific variables
-  ansible.builtin.include_vars:
-    file: "host_vars/{{ core }}.yml"
-
-- name: Render config files
-  ansible.builtin.template:
-    src: "/home/anton/automatedNetwork/lab-01/templates/eBGP.j2"
-    dest: "/home/anton/automatedNetwork/lab-01/configuration/{{ core }}-eBGP.txt"
-

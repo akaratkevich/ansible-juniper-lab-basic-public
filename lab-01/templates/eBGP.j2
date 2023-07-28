@@ -1,8 +1,0 @@
-
-set routing-options router-id {{ hostvars[inventory_hostname].ip_lo.split('/')[0] }}
-set routing-options autonomous-system {{ hostvars[inventory_hostname].as_local }}
-set protocols bgp group BGP-EXT type external
-set protocols bgp group BGP-EXT local-address {{ hostvars[inventory_hostname].local_peer_address }}
-set protocols bgp group BGP-EXT peer-as {{ hostvars[inventory_hostname].as_peer }}
-set protocols bgp group BGP-EXT neighbor {{ hostvars[inventory_hostname].remote_peer_address }}
-
