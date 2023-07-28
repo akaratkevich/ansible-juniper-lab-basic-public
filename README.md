@@ -130,16 +130,6 @@ RUN pip install exabgp==4.2.17
 This is the configuration file for exaBGP:
 <mark style="background: #ADCCFFA6;">exa.cfg</mark>
 ```
-FROM ubuntu:22.04
-
-# Install dependencies
-COPY exa.cfg .
-COPY route-smash-172.py .
-RUN apt update
-RUN apt install python3-pip net-tools wget mrtparse vim nano -y && \
-    rm -rf /var/lib/apt/lists/* && apt clean
-RUN pip install exabgp==4.2.17
-anton@mcc:~/automatedNetwork/lab-01/docker$ cat exa.cfg
 process announce-routes {
     run python3 ./route-smash-172.py;
     encoder json;
