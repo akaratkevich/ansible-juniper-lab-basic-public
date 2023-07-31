@@ -1,16 +1,23 @@
+---
 - name: Get specific Junos facts
   hosts: vr-vmx
   connection: local
-  gather_facts: no
   roles:
     - Juniper.junos
 
   tasks:
     - name: Get Junos OS version
       juniper_junos_facts:
+        savedir: "./output/"
       register: junos_facts
 
-    - name: Print facts
+    - name: Print facts/Os Version
       debug:
         var: junos_facts.ansible_facts.junos.version
+
+    - name: Print Serial Numbers/That start with VM64 (using when + regex)
+      debug:
+        msg: "Serial Number is {{ junos_facts.ansible_facts.junos.serialnumber }}"
+      when: junos_facts.ansible_facts.junos.serialnumber is match("^VM64.*")
+
 
